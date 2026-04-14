@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DRILLER · Guiones por Fases · G7Cripto & G7Fintech SAS</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0a0a;
+  --surface:#111111;
+  --surface2:#161616;
+  --border:#222;
+  --green:#00e07a;
+  --green-dim:#003d22;
+  --green-glow:rgba(0,224,122,0.12);
+  --amber:#f0a500;
+  --amber-dim:#3d2800;
+  --red:#ff3b3b;
+  --blue:#3b8fff;
+  --blue-dim:#001a3d;
+  --purple:#a855f7;
+  --white:#f0ede8;
+  --muted:#666;
+  --ink:#e8e4df;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Syne',sans-serif;line-height:1.6}
+
+/* HEADER */
+.site-header{background:linear-gradient(160deg,#0a0a0a 0%,#0d1a12 60%,#0a0f0a 100%);border-bottom:1px solid var(--border);padding:48px 24px 36px;text-align:center;position:relative;overflow:hidden}
+.site-header::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(0,224,122,0.08) 0%,transparent 70%);pointer-events:none}
+.logo-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:12px;opacity:.8}
+.site-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,96px);letter-spacing:.04em;line-height:1;color:var(--white);text-shadow:0 0 60px rgba(0,224,122,0.2)}
+.site-subtitle{font-size:14px;color:var(--muted);margin-top:12px;letter-spacing:.05em}
+.header-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
+.hp{background:rgba(0,224,122,.06);border:1px solid rgba(0,224,122,.2);color:var(--green);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;padding:5px 12px;border-radius:999px;text-transform:uppercase}
+
+/* WRAP */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 20px 80px}
+
+/* INTRO BOX */
+.intro-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:36px;position:relative;overflow:hidden}
+.intro-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.intro-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.intro-text{font-size:15px;color:var(--muted);line-height:1.7}
+.intro-text strong{color:var(--ink)}
+
+/* PHASE HEADERS */
+.phase-header{margin:52px 0 24px;position:relative}
+.phase-number{font-family:'Bebas Neue',sans-serif;font-size:120px;color:rgba(0,224,122,0.04);position:absolute;top:-30px;left:-10px;line-height:1;pointer-events:none;user-select:none}
+.phase-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:6px;position:relative}
+.phase-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);letter-spacing:.05em;color:var(--white);position:relative;line-height:1.1}
+.phase-subtitle{font-size:13px;color:var(--muted);margin-top:6px;position:relative}
+.phase-bar{height:1px;background:linear-gradient(90deg,var(--green),transparent);margin-top:16px}
+
+/* SCRIPT CARD */
+.script-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;margin-bottom:20px;overflow:hidden;transition:border-color .2s}
+.script-card:hover{border-color:rgba(0,224,122,.3)}
+.sc-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sc-meta{flex:1}
+.sc-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.sc-title{font-size:17px;font-weight:700;color:var(--white);line-height:1.2}
+.sc-desc{font-size:12px;color:var(--muted);margin-top:4px}
+.sc-badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+
+/* BADGES */
+.badge{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border-radius:999px;font-weight:500;letter-spacing:.05em;white-space:nowrap}
+.b-green{background:var(--green-dim);color:var(--green);border:1px solid rgba(0,224,122,.3)}
+.b-amber{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(240,165,0,.3)}
+.b-blue{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(59,143,255,.3)}
+.b-purple{background:rgba(168,85,247,.08);color:var(--purple);border:1px solid rgba(168,85,247,.3)}
+.b-red{background:rgba(255,59,59,.06);color:var(--red);border:1px solid rgba(255,59,59,.25)}
+
+/* AUDIENCE PILLS */
+.audience-row{display:flex;gap:8px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid var(--border);background:var(--surface2)}
+.aud-pill{font-size:11px;padding:4px 11px;border-radius:999px;background:#1a1a1a;border:1px solid #2a2a2a;color:#888}
+.aud-pill.aud-vet{border-color:rgba(240,165,0,.3);color:var(--amber);background:var(--amber-dim)}
+.aud-pill.aud-young{border-color:rgba(168,85,247,.3);color:var(--purple);background:rgba(168,85,247,.08)}
+.aud-pill.aud-both{border-color:rgba(0,224,122,.3);color:var(--green);background:var(--green-dim)}
+
+/* SCRIPT BODY */
+.sc-body{padding:24px}
+.section-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;margin-top:20px}
+.section-tag:first-child{margin-top:0}
+
+/* SCENE BLOCKS */
+.scene{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.scene-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.scene-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.driller-line{font-size:15px;color:var(--white);line-height:1.65;font-style:italic;position:relative;padding-left:16px}
+.driller-line::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--green);border-radius:2px}
+.direction{font-size:12px;color:var(--muted);margin-top:8px;font-family:'DM Mono',monospace}
+
+/* HOOK BOX */
+.hook-box{background:linear-gradient(135deg,var(--green-dim),rgba(0,30,15,.6));border:1px solid rgba(0,224,122,.35);border-radius:14px;padding:16px 20px;margin-bottom:14px}
+.hook-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:6px;opacity:.8}
+.hook-text{font-size:18px;font-weight:700;color:var(--white);line-height:1.3}
+
+/* CTA BOX */
+.cta-box{background:rgba(0,224,122,.05);border:1px solid rgba(0,224,122,.2);border-radius:12px;padding:14px 18px;margin-top:16px;display:flex;align-items:center;gap:12px}
+.cta-icon{font-size:20px;flex-shrink:0}
+.cta-text{font-size:13px;color:var(--green);font-weight:600}
+
+/* PRODUCTION NOTE */
+.prod-note{background:rgba(59,143,255,.05);border:1px solid rgba(59,143,255,.2);border-radius:10px;padding:12px 16px;margin-top:12px;font-size:12px;color:#7aaeff}
+.prod-note strong{color:var(--blue)}
+
+/* DURATION INDICATOR */
+.duration{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:10px;color:var(--amber);background:var(--amber-dim);border:1px solid rgba(240,165,0,.25);padding:3px 9px;border-radius:999px}
+
+/* PLATFORM ROW */
+.platform-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:20px 0}
+
+/* FOOTER */
+.doc-footer{text-align:center;padding:32px 0;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.08em}
+.doc-footer span{color:var(--green)}
+
+/* INDEX */
+.phase-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:40px}
+.idx-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;transition:border-color .2s;cursor:default}
+.idx-card:hover{border-color:rgba(0,224,122,.3)}
+.idx-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(0,224,122,.25);line-height:1}
+.idx-name{font-size:13px;font-weight:700;color:var(--white);margin-top:2px}
+.idx-years{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px}
+.idx-count{font-family:'DM Mono',monospace;font-size:10px;color:var(--green);margin-top:6px}
+
+@media(max-width:640px){
+  .sc-header{flex-direction:column}
+  .sc-badges{margin-top:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-tag">G7Cripto · G7Fintech SAS · Material Interno</div>
+  <h1 class="site-title">DRILLER</h1>
+  <p class="site-subtitle">Guiones Corporativos por Fases · Historia del Grupo G7 · 2013–2026</p>
+  <div class="header-pills">
+    <span class="hp">5 Fases</span>
+    <span class="hp">15 Guiones</span>
+    <span class="hp">Doble audiencia</span>
+    <span class="hp">Veteranos del gremio</span>
+    <span class="hp">18–25 años</span>
+    <span class="hp">LATAM</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <div class="intro-label">Guía de uso — DRILLER como cara corporativa</div>
+    <div class="intro-text">
+      Estos guiones están diseñados para ser <strong>entregados a DRILLER uno a uno</strong>, para que los revise y grabe en el orden que corresponde a cada fase de la historia del Grupo G7. Cada guion tiene su propia audiencia target, duración estimada, plataformas recomendadas y notas de producción. <strong>La narrativa avanza desde 2013 hasta abril de 2026.</strong> Los guiones para <strong>veteranos del gremio</strong> hablan desde la memoria compartida. Los de <strong>nueva generación (18–25)</strong> hablan desde la ambición y la oportunidad.
+    </div>
+  </div>
+
+  <!-- INDEX -->
+  <div class="phase-index">
+    <div class="idx-card">
+      <div class="idx-num">01</div>
+      <div class="idx-name">El Origen</div>
+      <div class="idx-years">2013 · Colombia</div>
+      <div class="idx-count">3 guiones</div>
+    </div>
+    <div class="idx-card">
+      <div class="idx-num">02</div>
+      <div class="idx-name">El Golpe Bancario</div>
+      <div class="idx-years">2017 · Colombia → USA</div>
+      <div class="idx-count">3 guiones</div>
+    </div>
+    <div class="idx-card">
+      <div class="idx-num">03</div>
+      <div class="idx-name">La Consolidación</div>
+      <div class="idx-years">2017–2024 · LATAM</div>
+      <div class="idx-count">3 guiones</div>
+    </div>
+    <div class="idx-card">
+      <div class="idx-num">04</div>
+      <div class="idx-name">La Transformación Fintech</div>
+      <div class="idx-years">2025 · G7Fintech SAS</div>
+      <div class="idx-count">3 guiones</div>
+    </div>
+    <div class="idx-card">
+      <div class="idx-num">05</div>
+      <div class="idx-name">G7Cripto Hoy</div>
+      <div class="idx-years">2026 · App · LATAM</div>
+      <div class="idx-count">3 guiones</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FASE 1 -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="phase-header">
+    <div class="phase-number">01</div>
+    <div class="phase-label">Fase 01</div>
+    <h2 class="phase-title">El Origen — 2013, Colombia</h2>
+    <p class="phase-subtitle">Cuando nadie resolvía el problema de los pagos en el gremio, alguien decidió hacerlo.</p>
+    <div class="phase-bar"></div>
+  </div>
+
+  <!-- GUION 01-A -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 01-A · Fase 1 · Origen</div>
+        <div class="sc-title">«Alguien tenía que empezar»</div>
+        <div class="sc-desc">Para los que llevan tiempo en el gremio y recuerdan cómo era cobrar antes.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-amber">Veteranos del gremio</span>
+        <span class="duration">⏱ 60–75 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-vet">Estudios con historia</span>
+      <span class="aud-pill aud-vet">Modelos con +5 años</span>
+      <span class="aud-pill aud-vet">Empresas del sector</span>
+      <span class="aud-pill">TikTok · Instagram · YouTube</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura — primeros 3 segundos</div>
+        <div class="hook-text">"¿Te acuerdas cómo era cobrar en el 2013?"</div>
+      </div>
+      <div class="section-tag">Guion completo — DRILLER habla directo a cámara</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">¿Te acuerdas cómo era cobrar en el 2013? Sin opciones. Sin rieles. El banco te miraba raro, y los pagos llegaban cuando querían... si llegaban.</div>
+        <div class="direction">📷 Plano cerrado. Tono serio. Pausa corta después de "si llegaban."</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Desarrollo · 6–35 seg</div>
+        <div class="driller-line">Ese año nació esto. No como una app. No como un producto de marketing. Nació como una necesidad real. Un grupo de personas en Medellín, Colombia, que entendían el gremio por dentro, decidieron resolver lo que nadie estaba resolviendo: cómo recibir pagos internacionales de plataformas de contenido digital de forma limpia, trazable y sin que el banco te cerrara la cuenta al mes siguiente.</div>
+        <div class="direction">📷 Plano medio. Ritmo pausado, deliberado. El peso está en "sin que el banco te cerrara la cuenta."</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Giro · 36–55 seg</div>
+        <div class="driller-line">No éramos fintech. No éramos cripto. Éramos expertos en reintegros cambiarios, en contratos de mandato internacional, en navegarle a un sistema que no estaba hecho para nosotros. Pero entendíamos el gremio. Y eso lo cambió todo.</div>
+        <div class="direction">📷 Leve zoom in. Énfasis en "entendíamos el gremio."</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 56–70 seg</div>
+        <div class="driller-line">Lo que ves hoy — G7Cripto — empezó ahí. En 2013. Resolviendo el problema que el sistema ignoraba. Esto es el inicio de una historia que te va a interesar conocer.</div>
+        <div class="direction">📷 Plano medio-largo. Tono de autoridad. CTA visual: logo G7Cripto + "Síguenos para la siguiente parte."</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🎯</div>
+        <div class="cta-text">CTA: "Síguenos. Esta historia tiene 5 partes. Y cada una te afecta si estás en el gremio."</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Fondo oscuro, sobrio. Sin música estridente. Subtítulos obligatorios. DRILLER viste profesional pero accesible. Si se puede incluir archivo fotográfico 2013 en lower third o B-roll, usar.</div>
+    </div>
+  </div>
+
+  <!-- GUION 01-B -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 01-B · Fase 1 · Origen</div>
+        <div class="sc-title">«Bienvenido al gremio — Parte 1»</div>
+        <div class="sc-desc">Para la nueva generación que quiere entender de dónde viene G7Cripto.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-purple">18–25 años</span>
+        <span class="duration">⏱ 45–55 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-young">Modelos nuevas/nuevos</span>
+      <span class="aud-pill aud-young">Estudiantes del sector</span>
+      <span class="aud-pill aud-young">Emprendedores digitales</span>
+      <span class="aud-pill">TikTok · Reels</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura — primeros 3 segundos</div>
+        <div class="hook-text">"¿Sabes cuántos años llevamos resolviendo lo que tú necesitas hoy?"</div>
+      </div>
+      <div class="section-tag">Guion completo — energético, directo, generacional</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">¿Sabes cuántos años llevamos resolviendo lo que tú necesitas hoy? Trece. Desde 2013.</div>
+        <div class="direction">📷 Hook visual rápido. Número "13" en pantalla. Corte ágil.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Contexto rápido · 6–25 seg</div>
+        <div class="driller-line">En 2013, cuando el gremio del contenido digital todavía no tenía soluciones reales de pago, nació en Colombia una empresa que dijo: "nosotros lo hacemos." Sin app. Sin cripto. Con conocimiento real de cómo funciona este mundo por dentro.</div>
+        <div class="direction">📷 Ritmo dinámico. Texto en pantalla reforzando los años: 2013 → hoy.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Relevancia para el usuario · 26–45 seg</div>
+        <div class="driller-line">¿Por qué te importa esto a ti? Porque todo lo que G7Cripto te ofrece hoy — un solo saldo, retiro same-day, wallet verificada, salida en cripto o en tu banco — existe porque alguien pasó más de una década aprendiendo a hacerlo bien. No improvisando. Construyendo.</div>
+        <div class="direction">📷 Transición a elementos de la app mientras DRILLER habla. UX visual al fondo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 46–55 seg</div>
+        <div class="driller-line">Esto es el capítulo uno. La historia no termina aquí. Te veo en la parte dos.</div>
+        <div class="direction">📷 Smash cut al logo. Energía alta de cierre.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto. Y sigue la historia." — Con link en bio.</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Edición ágil. Subtítulos animados. Paleta oscura con destellos en verde. Música lo-fi o trap suave de fondo. Duración máxima para TikTok: 55 seg.</div>
+    </div>
+  </div>
+
+  <!-- GUION 01-C -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 01-C · Fase 1 · Origen</div>
+        <div class="sc-title">«El ADN del Grupo G7»</div>
+        <div class="sc-desc">Pieza institucional — doble audiencia. Para redes de G7Fintech SAS.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-green">Doble audiencia</span>
+        <span class="badge b-blue">G7Fintech SAS</span>
+        <span class="duration">⏱ 75–90 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-both">Aliados estratégicos</span>
+      <span class="aud-pill aud-both">Plataformas internacionales</span>
+      <span class="aud-pill aud-both">Público general del gremio</span>
+      <span class="aud-pill">LinkedIn · YouTube · Instagram</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"No llegamos a la tecnología porque estaba de moda. Llegamos porque no teníamos otra opción."</div>
+      </div>
+      <div class="section-tag">Guion completo — tono corporativo con calor humano</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">No llegamos a la tecnología porque estaba de moda. Llegamos porque no teníamos otra opción. Y esa diferencia lo es todo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Historia · 9–50 seg</div>
+        <div class="driller-line">En 2013, en Medellín, nació la empresa que hoy es G7Fintech SAS. En ese entonces se llamaba V.C. InterWeb. El nombre cambió. La razón social cambió. Pero el propósito no: resolver el problema de monetización de una industria que la banca tradicional no quería atender. Reintegros cambiarios. Contratos de mandato. Exportación de servicios. Eso era el grupo G7 en su ADN.</div>
+        <div class="direction">📷 B-roll de Medellín, mapas LATAM, documentos jurídicos en fondo desenfocado. Voz pausada y segura.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Proyección · 51–75 seg</div>
+        <div class="driller-line">Hoy, más de una década después, ese ADN sigue vivo en cada decisión que toma G7Fintech SAS. La tecnología cambió. El modelo evolucionó. Los aliados son Binance y Global66. La app se llama G7Cripto. Pero la esencia es la misma: infraestructura real para una industria real.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 76–88 seg</div>
+        <div class="driller-line">Esto es G7. Conoce nuestra historia. Y entiende por qué importa.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🌐</div>
+        <div class="cta-text">CTA: "g7fintech.com — g7cripto.com — La infraestructura que el gremio necesitaba."</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FASE 2 -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="phase-header">
+    <div class="phase-number">02</div>
+    <div class="phase-label">Fase 02</div>
+    <h2 class="phase-title">El Golpe Bancario — 2017</h2>
+    <p class="phase-subtitle">El sistema los bloqueó. Ellos respondieron con una jugada que cambió todo.</p>
+    <div class="phase-bar"></div>
+  </div>
+
+  <!-- GUION 02-A -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 02-A · Fase 2 · El Golpe</div>
+        <div class="sc-title">«Nos cerraron la cuenta. Abrimos una en USA.»</div>
+        <div class="sc-desc">Para veteranos que vivieron o conocen los bloqueos bancarios del sector.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-amber">Veteranos del gremio</span>
+        <span class="duration">⏱ 60–70 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-vet">Estudios con historia</span>
+      <span class="aud-pill aud-vet">Operadores senior</span>
+      <span class="aud-pill">TikTok · YouTube · Instagram</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"En 2017 el banco nos dijo que no. Nosotros le dijimos: perfecto."</div>
+      </div>
+      <div class="section-tag">Guion completo</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">En 2017 el banco nos dijo que no. Y eso fue lo mejor que nos pudo pasar.</div>
+        <div class="direction">📷 Tono entre irónico y serio. Pausa impactante.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El problema · 6–28 seg</div>
+        <div class="driller-line">El grupo G7 operaba bien en Colombia. Demasiado bien, según algunos bancos. El flujo de pagos del sector adulto digital generó alertas. Y de repente, las cuentas que usábamos para recibir pagos internacionales empezaron a cerrarse. La banca colombiana tradicional no quería estar cerca de este gremio, sin importar que todo fuera legal.</div>
+        <div class="direction">📷 Visual de puerta cerrándose. Corte seco.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La respuesta · 29–52 seg</div>
+        <div class="driller-line">¿Qué hicimos? Lo que hacen los que entienden el juego: cambiamos el tablero. Abrimos G7 Business Solutions Corp. en Florida, Estados Unidos. Movimos el punto de entrada de fondos a USA. Las plataformas internacionales empezaron a pagar vía ACH directo a nuestra cuenta en Estados Unidos. Sin fricción. Sin explicaciones al banco de la esquina. Profesional. Trazable. Escalable.</div>
+        <div class="direction">📷 Mapa: Colombia → Florida. Línea de flujo animada.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 53–68 seg</div>
+        <div class="driller-line">Ese movimiento en 2017 fue el nacimiento real del modelo internacional del grupo G7. Y de ahí para adelante, nada volvió a ser igual. Siguiente capítulo: cómo eso se convirtió en lo que hoy conoces.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🔗</div>
+        <div class="cta-text">CTA: "Parte 3 ya disponible — sigue la historia del grupo G7."</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Momento dramático clave de la saga. Edición con cortes precisos. El tono de DRILLER debe transmitir que este fue un momento de quiebre y de victoria al mismo tiempo.</div>
+    </div>
+  </div>
+
+  <!-- GUION 02-B -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 02-B · Fase 2 · El Golpe</div>
+        <div class="sc-title">«Por qué el gremio necesitaba estructura»</div>
+        <div class="sc-desc">Para nueva generación — el contexto bancario que afecta a todos hoy.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-purple">18–25 años</span>
+        <span class="duration">⏱ 45–55 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-young">Modelos nuevas/nuevos</span>
+      <span class="aud-pill aud-young">Primera experiencia de pago</span>
+      <span class="aud-pill">TikTok · Reels</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"¿Sabes por qué los bancos tradicionales no quieren atender a tu gremio?"</div>
+      </div>
+      <div class="section-tag">Guion completo — educativo y directo</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">¿Sabes por qué los bancos tradicionales no quieren atender a tu gremio? No es personal. Es política.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Contexto · 6–30 seg</div>
+        <div class="driller-line">En 2017, el grupo G7 enfrentó el bloqueo bancario más fuerte de su historia. Las cuentas con las que recibían pagos de plataformas de contenido digital empezaron a cerrarse en Colombia. Los bancos no querían el riesgo reputacional del sector adulto, aunque los pagos fueran 100% legales. Eso le ha pasado a muchos en este gremio. Y si no te ha pasado a ti todavía, puede pasarte.</div>
+        <div class="direction">📷 Pantalla dividida: banco tradicional vs. plataformas digitales. Subtítulos en movimiento.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La solución que cambió el modelo · 31–48 seg</div>
+        <div class="driller-line">La respuesta del Grupo G7 fue moverse a USA. Crear una estructura internacional. Y eso los puso años adelante de cualquiera que siguiera dependiendo del banco local. Hoy, esa lección vive dentro de G7Cripto. Por eso tienes wallet verificada, rutas cripto y salida en banco local — sin depender de un solo sistema.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 49–55 seg</div>
+        <div class="driller-line">La infraestructura que usas hoy fue construida por quien sobrevivió ese bloqueo. Eso importa.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto — Infraestructura que ya pasó por fuego."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION 02-C -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 02-C · Fase 2 · El Golpe</div>
+        <div class="sc-title">«Colombia → USA: el modelo que cambió la operación»</div>
+        <div class="sc-desc">Pieza institucional para G7Fintech SAS. Aliados y plataformas internacionales.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-green">Doble audiencia</span>
+        <span class="badge b-blue">G7Fintech SAS</span>
+        <span class="duration">⏱ 70–80 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-both">Plataformas internacionales</span>
+      <span class="aud-pill aud-both">Aliados del sector</span>
+      <span class="aud-pill">LinkedIn · YouTube</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"La resiliencia no es un valor corporativo. Es lo que haces cuando el sistema te da la espalda."</div>
+      </div>
+      <div class="section-tag">Guion completo — institucional con fuerza narrativa</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">La resiliencia no es un valor corporativo que se escribe en una diapositiva. Es lo que haces cuando el sistema te da la espalda y decides seguir operando de todas formas.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El hecho · 9–40 seg</div>
+        <div class="driller-line">En 2017, G7 enfrentó bloqueo bancario en Colombia. La respuesta fue crear G7 Business Solutions Corp. en Florida, Estados Unidos. Desde ese momento, los pagos de las plataformas internacionales entraron vía ACH a cuentas en USA. El grupo construyó un modelo binacional Colombia–USA que se convirtió en la base de todo lo que viene después: mayor trazabilidad, menor fricción, mayor capacidad de escalar.</div>
+        <div class="direction">📷 Mapa con flujo de pagos USA → Colombia → LATAM. Líneas animadas. Tono ejecutivo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Proyección · 41–70 seg</div>
+        <div class="driller-line">Esa decisión de 2017 fue el primer paso hacia lo que hoy es G7Fintech SAS: una infraestructura financiera tecnológica, multi-entidad, con presencia operativa real en Colombia y en USA, y rieles digitales que integran Binance y Global66. Lo que hoy llamamos G7Cripto tiene ese ADN. El ADN de quien se adaptó cuando tenía que hacerlo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 71–80 seg</div>
+        <div class="driller-line">G7Fintech SAS. Más de una década construyendo lo que el gremio necesita.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🌐</div>
+        <div class="cta-text">CTA: "g7fintech.com — Conoce nuestra operación."</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FASE 3 -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="phase-header">
+    <div class="phase-number">03</div>
+    <div class="phase-label">Fase 03</div>
+    <h2 class="phase-title">La Consolidación — 2017–2024</h2>
+    <p class="phase-subtitle">Una década silenciosa. Mientras el mundo cripto hacía ruido, G7 construía infraestructura real.</p>
+    <div class="phase-bar"></div>
+  </div>
+
+  <!-- GUION 03-A -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 03-A · Fase 3 · Consolidación</div>
+        <div class="sc-title">«Los años que nadie vio — pero todos necesitaban»</div>
+        <div class="sc-desc">Para veteranos del gremio que estuvieron en esos años y lo vivieron.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-amber">Veteranos del gremio</span>
+        <span class="duration">⏱ 65–80 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-vet">Estudios LATAM con historia</span>
+      <span class="aud-pill aud-vet">Modelos senior</span>
+      <span class="aud-pill">YouTube · Instagram · TikTok</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"Entre 2017 y 2024, el gremio creció. Y nosotros crecimos con él — sin hacer ruido."</div>
+      </div>
+      <div class="section-tag">Guion completo</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–6 seg</div>
+        <div class="driller-line">Entre 2017 y 2024, el gremio del contenido digital adulto en LATAM creció como nunca. Y nosotros crecimos con él. Sin hacer ruido. Sin campañas de marketing. Construyendo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Qué pasó en esos años · 7–40 seg</div>
+        <div class="driller-line">En esos siete años, el Grupo G7 hizo tres cosas en silencio. Primero: estabilizó la operación internacional. Las plataformas pagaban directo a USA, y desde ahí el dinero llegaba a estudios y modelos en Colombia, México, Argentina y más. Segundo: nos volvimos más especializados. No estábamos en todo el mercado. Solo en el nuestro. Sector adulto digital. Sin disculpas. Con cumplimiento. Tercero: empezamos a mirar hacia donde iba el futuro. Y el futuro era cripto y fintech.</div>
+        <div class="direction">📷 Gráfica de crecimiento. Mapa LATAM expandiéndose. Ritmo narrativo tranquilo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Lo que significó · 41–65 seg</div>
+        <div class="driller-line">Si tú eras cliente del grupo G7 en esos años, ya lo sabes. Los pagos llegaban. Había trazabilidad. El mandato funcionaba. Eso no fue casualidad. Fue el resultado de años aprendiendo a operar dentro de las reglas de un sistema que no nos facilitaba nada.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 66–78 seg</div>
+        <div class="driller-line">Esos años silenciosos son la razón por la que lo que viene después — la transformación fintech — tiene raíces reales. Siguiente parte: cómo pasamos de ser una empresa de pagos a ser una infraestructura.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🔗</div>
+        <div class="cta-text">CTA: "Parte 4 — La transformación fintech. Ya disponible."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION 03-B -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 03-B · Fase 3 · Consolidación</div>
+        <div class="sc-title">«Cómo se construye confianza en 7 años»</div>
+        <div class="sc-desc">Para nueva generación — qué significa que una empresa tenga historia real.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-purple">18–25 años</span>
+        <span class="duration">⏱ 45–55 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-young">Primera app de pagos</span>
+      <span class="aud-pill aud-young">Modelos en inicio</span>
+      <span class="aud-pill">TikTok · Reels</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"¿Por qué elegirías G7Cripto sobre cualquier otra app? Una palabra: historia."</div>
+      </div>
+      <div class="section-tag">Guion completo — directo, conversacional</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">¿Por qué elegirías G7Cripto sobre cualquier otra app de pagos? Te doy una razón que ninguna app nueva puede darte. Historia.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El argumento · 6–35 seg</div>
+        <div class="driller-line">Mientras muchas apps del mercado llevan 2 o 3 años operando, el grupo detrás de G7Cripto lleva más de una década. Entre 2017 y 2024, procesaron pagos para estudios y modelos en toda LATAM. Aprendieron a manejar fricciones bancarias. Entendieron los ciclos de pago de cada plataforma. Construyeron relaciones con aliados internacionales reales: Binance y Global66. Eso no se improvisa.</div>
+        <div class="direction">📷 Timeline animado. Logos de aliados. Datos de cobertura en pantalla.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Por qué te importa · 36–50 seg</div>
+        <div class="driller-line">Cuando usas G7Cripto, no estás siendo el usuario que prueba si la app funciona. Estás usando algo que ya fue probado. Que ya sobrevivió bloqueos bancarios. Que ya procesó millones. Eso es lo que hace la diferencia cuando necesitas que tu dinero llegue.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 51–55 seg</div>
+        <div class="driller-line">Un saldo. Retiro same-day. G7Cripto. La historia respalda la app.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto — Más de una década de experiencia en tu bolsillo."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION 03-C -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 03-C · Fase 3 · Consolidación</div>
+        <div class="sc-title">«De mandato a infraestructura — la evolución del modelo»</div>
+        <div class="sc-desc">Pieza institucional. Para plataformas y aliados que evalúan G7Fintech SAS.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-green">Doble audiencia</span>
+        <span class="badge b-blue">G7Fintech SAS</span>
+        <span class="duration">⏱ 80–90 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-both">Plataformas internacionales</span>
+      <span class="aud-pill aud-both">Due diligence corporativo</span>
+      <span class="aud-pill">LinkedIn · YouTube</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"Muchas empresas hablan de escalabilidad. Pocas la construyeron paso a paso durante 7 años."</div>
+      </div>
+      <div class="section-tag">Guion completo — tono ejecutivo y técnico</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">Muchas empresas hablan de escalabilidad. Pocas la construyeron paso a paso durante siete años, con un solo sector como foco y sin desvíos.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La construcción · 9–50 seg</div>
+        <div class="driller-line">Entre 2017 y 2024, el Grupo G7 consolidó tres pilares que hoy sostienen G7Fintech SAS. El primero: operación internacional estable. Pagos vía ACH desde USA, distribución en LATAM, control cambiario y cumplimiento SAGRILAFT desde Colombia. El segundo: especialización absoluta. Solo sector de contenido digital adulto. Cero dispersión en otros mercados. Eso construyó conocimiento profundo de los ciclos, las plataformas y los flujos. El tercero: la transición tecnológica. La adopción progresiva de rieles digitales, criptoactivos y BaaS que hoy se concretan en la alianza con Global66 y Binance.</div>
+        <div class="direction">📷 Infografía de los tres pilares. Visual limpio y ejecutivo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La relevancia · 51–80 seg</div>
+        <div class="driller-line">Para cualquier plataforma o aliado que evalúa trabajar con G7Fintech SAS hoy, esos siete años no son historia académica. Son la prueba de que el modelo fue construido para durar, para cumplir, y para operar en un entorno complejo con responsabilidad. G7Cripto es el producto de todo eso.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 81–88 seg</div>
+        <div class="driller-line">G7Fintech SAS. Infraestructura con historia. Tecnología con propósito.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🌐</div>
+        <div class="cta-text">CTA: "g7fintech.com — Conoce el modelo completo."</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FASE 4 -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="phase-header">
+    <div class="phase-number">04</div>
+    <div class="phase-label">Fase 04</div>
+    <h2 class="phase-title">La Transformación Fintech — 2025</h2>
+    <p class="phase-subtitle">El año en que todo cambió de nombre, de estructura y de escala. G7Fintech SAS nace.</p>
+    <div class="phase-bar"></div>
+  </div>
+
+  <!-- GUION 04-A -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 04-A · Fase 4 · Transformación</div>
+        <div class="sc-title">«El año que dejamos de ser una empresa de pagos»</div>
+        <div class="sc-desc">Para veteranos — el salto conceptual de empresa a infraestructura.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-amber">Veteranos del gremio</span>
+        <span class="duration">⏱ 65–75 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-vet">Clientes históricos del Grupo G7</span>
+      <span class="aud-pill aud-vet">Operadores del sector</span>
+      <span class="aud-pill">YouTube · Instagram · TikTok</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"En 2025 cambiamos el nombre. Pero lo que realmente cambió fue la escala."</div>
+      </div>
+      <div class="section-tag">Guion completo</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–6 seg</div>
+        <div class="driller-line">En 2025 cambiamos el nombre. G7BSCORP.COM S.A.S. pasó a llamarse G7Fintech SAS. Pero lo que realmente cambió no fue el nombre. Fue la escala de lo que construimos.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Los cambios reales · 7–40 seg</div>
+        <div class="driller-line">En ese año, cinco cosas pasaron al mismo tiempo. Primero: la razón social evolucionó a G7Fintech SAS — posicionamiento claro como infraestructura tecnológica financiera. Segundo: se lanzó el proyecto G7BSPay LATAM, el precursor directo de lo que hoy conoces como G7Cripto. Tercero: se formalizó la integración con Binance vía G7 Commerce SAS para flujos en criptoactivos. Cuarto: Global66 se convirtió en la capa BaaS para flujos fiat. Quinto: el cumplimiento se fortaleció con SAGRILAFT, UIAF, KYC, KYB, listas OFAC — una estructura de compliance real.</div>
+        <div class="direction">📷 Lista animada de los 5 puntos. Cada uno aparece con su ícono. Ritmo dinámico.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Lo que eso significa · 41–62 seg</div>
+        <div class="driller-line">Para el gremio, eso significa que dejaron de depender de un modelo de intermediación y empezaron a operar como infraestructura: cripto-fiat, multi-riel, con trazabilidad de inicio a fin. El cambio no fue de logo. Fue de nivel.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 63–73 seg</div>
+        <div class="driller-line">Si llevas tiempo con nosotros, este es el momento de entender por qué seguimos siendo tu mejor opción. Si eres nuevo, este es el momento de subir a bordo. El siguiente capítulo es el final. Y es el más importante.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🔗</div>
+        <div class="cta-text">CTA: "Parte 5 — G7Cripto hoy. El producto que lo resume todo."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION 04-B -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 04-B · Fase 4 · Transformación</div>
+        <div class="sc-title">«Fintech no es una moda — es una evolución»</div>
+        <div class="sc-desc">Para nueva generación — qué significa que G7 sea fintech y por qué importa.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-purple">18–25 años</span>
+        <span class="duration">⏱ 45–55 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-young">Tech-savvy</span>
+      <span class="aud-pill aud-young">Modelos con interés en cripto</span>
+      <span class="aud-pill">TikTok · Reels</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"Todo el mundo dice que es fintech. G7 lo es porque no le quedó otra opción."</div>
+      </div>
+      <div class="section-tag">Guion completo — energético, desmitificando el buzzword</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–5 seg</div>
+        <div class="driller-line">Todo el mundo dice que es fintech. G7 lo es porque no le quedó otra opción — y eso lo hace real.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Qué pasó en 2025 · 6–30 seg</div>
+        <div class="driller-line">En 2025, el Grupo G7 hizo oficial lo que venía construyendo en silencio. G7Fintech SAS. Un nombre nuevo para una estructura nueva: Binance para cripto, Global66 para flujos fiat, app propia, compliance documentado y cobertura en 7 países de LATAM. No es teoría. Es la infraestructura que hoy hace funcionar G7Cripto.</div>
+        <div class="direction">📷 Split screen: logos Binance + Global66. Mapa de 7 países activos.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Por qué te importa · 31–48 seg</div>
+        <div class="driller-line">Cuando usas G7Cripto, estás usando el resultado de esa transformación. Un saldo en USD, retiro same-day, wallet con KYC, salida en cripto o banco local. Sin montos mínimos. Sin tecnicismos. Solo opciones reales para que lo que generas llegue como debe.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 49–55 seg</div>
+        <div class="driller-line">Esto no es fintech de moda. Es fintech de necesidad. Y eso lo sentirás cuando cobres.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto — Fintech construido para este gremio."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUION 04-C -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 04-C · Fase 4 · Transformación</div>
+        <div class="sc-title">«G7Fintech SAS — de la intermediación a la infraestructura»</div>
+        <div class="sc-desc">Pieza institucional formal. Para presentaciones corporativas y aliados.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-green">Doble audiencia</span>
+        <span class="badge b-blue">G7Fintech SAS</span>
+        <span class="duration">⏱ 85–100 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-both">Due diligence</span>
+      <span class="aud-pill aud-both">Reguladores y compliance</span>
+      <span class="aud-pill aud-both">Plataformas internacionales</span>
+      <span class="aud-pill">LinkedIn · Presentaciones</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"G7Fintech SAS no es una startup. Es el resultado de más de una década de adaptación operativa."</div>
+      </div>
+      <div class="section-tag">Guion completo — corporativo, preciso, contundente</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">G7Fintech SAS no es una startup. Es el resultado de más de una década de adaptación operativa, jurídica y tecnológica dentro de uno de los sectores más exigentes del ecosistema de pagos digitales en LATAM.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La transformación · 9–55 seg</div>
+        <div class="driller-line">En 2025, la empresa completa su transformación hacia modelo fintech. El cambio de razón social a G7Fintech SAS marca el inicio de una nueva arquitectura operativa: integración formal con Binance vía G7 Commerce SAS para flujos en criptoactivos; adopción de Global66 como capa Banking-as-a-Service para flujos fiat y dispersión en LATAM; lanzamiento del producto G7BSPay LATAM — precursor de G7Cripto —; y fortalecimiento del marco de cumplimiento bajo SAGRILAFT, UIAF, KYC, KYB y monitoreo transaccional con controles de listas OFAC, ONU y UE.</div>
+        <div class="direction">📷 Diagrama de arquitectura operativa. Visual institucional. Tono ejecutivo y preciso.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Posicionamiento · 56–88 seg</div>
+        <div class="driller-line">G7Fintech SAS opera como hub tecnológico central del G7 Group. No actúa como banco, exchange ni custodio. Es un proveedor tecnológico e integrador operativo que articula los flujos de pagos del sector de contenido digital adulto en LATAM, utilizando infraestructura de terceros licenciados, tecnología propia y controles de cumplimiento documentados. Su producto principal, G7Cripto, representa la síntesis comercial y tecnológica de este modelo.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 89–98 seg</div>
+        <div class="driller-line">G7Fintech SAS. Infraestructura. Cumplimiento. Propósito. Para más información: g7fintech.com</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🌐</div>
+        <div class="cta-text">CTA: "g7fintech.com — Infraestructura tecnológica para pagos digitales en LATAM."</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- FASE 5 -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="phase-header">
+    <div class="phase-number">05</div>
+    <div class="phase-label">Fase 05</div>
+    <h2 class="phase-title">G7Cripto Hoy — 2026</h2>
+    <p class="phase-subtitle">El producto que resume 13 años de historia. La infraestructura cripto-fiat para el gremio en LATAM.</p>
+    <div class="phase-bar"></div>
+  </div>
+
+  <!-- GUION 05-A -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 05-A · Fase 5 · G7Cripto Hoy</div>
+        <div class="sc-title">«13 años construyendo lo que tienes en tus manos»</div>
+        <div class="sc-desc">Para veteranos — el cierre emocional de la saga. El regreso al origen.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-amber">Veteranos del gremio</span>
+        <span class="duration">⏱ 75–90 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-vet">Clientes históricos</span>
+      <span class="aud-pill aud-vet">Estudios y modelos con trayectoria</span>
+      <span class="aud-pill">YouTube · Instagram</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"Todo lo que ves hoy en G7Cripto empezó en 2013 con un problema que nadie quería resolver."</div>
+      </div>
+      <div class="section-tag">Guion completo — cierre emocional de la saga</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">Todo lo que ves hoy en G7Cripto — el saldo en USD, el retiro same-day, la wallet verificada, la salida en cripto o en tu banco — empezó en 2013 con un problema que nadie quería resolver.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El viaje completo · 9–45 seg</div>
+        <div class="driller-line">Trece años. Seis cambios de razón social. Un bloqueo bancario que nos mandó a abrir operación en USA. Años de mandato internacional. La adopción de cripto antes de que fuera popular. La integración con Binance y Global66. Y finalmente, G7Cripto: el producto que resume todo eso en una app que funciona en 7 países de LATAM. Colombia. México. Argentina. Chile. Ecuador. Panamá. Uruguay.</div>
+        <div class="direction">📷 Montaje rápido de la historia: fechas, logos anteriores, mapa LATAM expandiéndose. Emotivo pero preciso.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Lo que G7Cripto es hoy · 46–68 seg</div>
+        <div class="driller-line">Hoy G7Cripto no se vende como "otra app de pagos." Es infraestructura financiera cripto-fiat. Non-custodial. Con KYC. Con same-day settlement cuando aplica. Sin montos mínimos. Con más opciones para recibir tus pagos de las que jamás habías tenido en este gremio. Y con el respaldo de quienes llevan más de una década construyéndola.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre emocional · 69–88 seg</div>
+        <div class="driller-line">Si llevas tiempo con nosotros: gracias por confiar en el proceso. Si eres nuevo: llegaste en el mejor momento. G7Cripto ya está lista para ti. Y nosotros llevamos 13 años preparándonos para este momento.</div>
+        <div class="direction">📷 Tono cálido, orgulloso. Logo G7Cripto en pantalla completa al cierre.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto — 13 años de historia en tu bolsillo. g7cripto.com"</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Este es el guion más importante de la saga. Cierre emocional. DRILLER puede mostrar más calor y menos frialdad corporativa aquí. Si se puede incluir un montaje visual de la historia del grupo (fotos, capturas, evolución de logo), sumar como B-roll.</div>
+    </div>
+  </div>
+
+  <!-- GUION 05-B -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 05-B · Fase 5 · G7Cripto Hoy</div>
+        <div class="sc-title">«¿Qué es G7Cripto y por qué te cambia el juego?»</div>
+        <div class="sc-desc">Para nueva generación — el producto explicado en su lenguaje.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-purple">18–25 años</span>
+        <span class="duration">⏱ 45–55 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-young">Primera experiencia</span>
+      <span class="aud-pill aud-young">Modelos nuevas/nuevos</span>
+      <span class="aud-pill aud-young">Emprendedores digitales</span>
+      <span class="aud-pill">TikTok · Reels · Stories</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"Un solo saldo. Retiro hoy. Cripto o banco. Sin montos mínimos. Eso es G7Cripto."</div>
+      </div>
+      <div class="section-tag">Guion completo — producto first, energético</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–4 seg</div>
+        <div class="driller-line">Un solo saldo. Retiro hoy. Cripto o tu banco local. Sin montos mínimos. Bienvenido a G7Cripto.</div>
+        <div class="direction">📷 Corte visual rápido con cada beneficio en texto. Hook ultrarrápido.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El problema que resuelve · 5–22 seg</div>
+        <div class="driller-line">¿Tienes pagos en distintas plataformas y cada una te llega diferente, con diferente comisión, diferente tiempo y diferente dolor? G7Cripto centraliza todo eso en un solo saldo en USD. Retiras cuando quieres. En cripto o en tu banco. Sin esperar días. Sin que te cobren de más.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El respaldo · 23–40 seg</div>
+        <div class="driller-line">Y no es una app nueva que no sabes si va a durar. G7Cripto viene de más de 13 años de experiencia en pagos para el gremio de contenido digital. Wallet verificada con KYC. Respaldada por Binance y Global66. Activa en Colombia, México, Argentina, Chile, Ecuador, Panamá y Uruguay.</div>
+        <div class="direction">📷 Logos de aliados. Mapa LATAM. Rápido pero legible.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">CTA fuerte · 41–52 seg</div>
+        <div class="driller-line">¿Cuánto estás perdiendo cada vez que cobras? Con G7Cripto pierdes menos. Y lo que genera llega mejor. Descárgala. El link está en bio.</div>
+        <div class="direction">📷 Pantalla final: app mockup + QR + CTA animado.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">📲</div>
+        <div class="cta-text">CTA: "Descarga G7Cripto — Link en bio / g7cripto.com"</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Máxima energía. Edición tipo TikTok nativa. Hook debe impactar en los primeros 2 segundos. Subtítulos grandes y animados. Fondo oscuro con destellos en verde G7. Duración objetivo: 50 segundos.</div>
+    </div>
+  </div>
+
+  <!-- GUION 05-C -->
+  <div class="script-card">
+    <div class="sc-header">
+      <div class="sc-meta">
+        <div class="sc-num">Guion 05-C · Fase 5 · G7Cripto Hoy</div>
+        <div class="sc-title">«G7Cripto 2026 — La infraestructura que el gremio necesitaba»</div>
+        <div class="sc-desc">Pieza institucional final. El producto completo para aliados y mercado.</div>
+      </div>
+      <div class="sc-badges">
+        <span class="badge b-green">Doble audiencia</span>
+        <span class="badge b-blue">G7Cripto · G7Fintech SAS</span>
+        <span class="duration">⏱ 90–100 seg</span>
+      </div>
+    </div>
+    <div class="audience-row">
+      <span class="aud-pill aud-both">Aliados estratégicos</span>
+      <span class="aud-pill aud-both">Plataformas LATAM</span>
+      <span class="aud-pill aud-both">Gremio general</span>
+      <span class="aud-pill">YouTube · LinkedIn · Instagram</span>
+    </div>
+    <div class="sc-body">
+      <div class="hook-box">
+        <div class="hook-label">Hook de apertura</div>
+        <div class="hook-text">"En 2026, G7Cripto no es una promesa. Es una infraestructura operativa con 13 años de construcción detrás."</div>
+      </div>
+      <div class="section-tag">Guion completo — el gran cierre corporativo de la saga</div>
+      <div class="scene">
+        <div class="scene-label">Apertura · 0–8 seg</div>
+        <div class="driller-line">En 2026, G7Cripto no es una promesa. Es una infraestructura operativa con 13 años de construcción detrás. Y esto es lo que significa para ti.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">La propuesta de valor · 9–45 seg</div>
+        <div class="driller-line">G7Cripto es la app de pagos cripto-fiat del G7 Group para la industria de contenido digital adulto en América Latina. Un solo saldo en USD. Retiro same-day cuando aplica. Wallet verificada por KYC. Salida en cripto — USDT, USDC, BTC — o en banco local según tu país. Sin montos mínimos. Operativa en Colombia, México, Argentina, Chile, Ecuador, Panamá y Uruguay. Respaldada por Binance vía G7Commerce SAS y Global66 como capa BaaS. Propiedad de G7Fintech SAS. Desarrollada por G7Tech SAS.</div>
+        <div class="direction">📷 Infografía animada del ecosistema completo. Flujo visual: plataforma → G7Cripto → usuario.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">El diferencial · 46–72 seg</div>
+        <div class="driller-line">Pero lo que realmente diferencia a G7Cripto no es la tecnología. Es la historia. Ninguna otra infraestructura de pagos para este gremio tiene 13 años de experiencia operativa. Nadie más sobrevivió el bloqueo bancario de 2017 y lo convirtió en una operación internacional. Nadie más construyó paso a paso el compliance que hoy responde a SAGRILAFT, UIAF, OFAC y KYC en el mismo ecosistema. Eso no se improvisa.</div>
+      </div>
+      <div class="scene">
+        <div class="scene-label">Cierre · 73–98 seg</div>
+        <div class="driller-line">Si eres parte del gremio y buscas una solución de pagos que entienda tu negocio desde adentro: G7Cripto ya está lista para ti. Descárgala, verifica tu wallet y empieza a cobrar mejor. Si eres una plataforma o aliado estratégico: g7fintech.com tiene la información completa sobre nuestro modelo operativo y de cumplimiento. Bienvenido al siguiente nivel.</div>
+        <div class="direction">📷 Pantalla final doble: app G7Cripto + logo G7Fintech SAS. URLs visibles. Música de cierre épica pero contenida.</div>
+      </div>
+      <div class="cta-box">
+        <div class="cta-icon">🚀</div>
+        <div class="cta-text">CTA doble: "g7cripto.com — Descarga la app" + "g7fintech.com — Para aliados y plataformas"</div>
+      </div>
+      <div class="prod-note"><strong>Nota de producción:</strong> Este es el guion de mayor producción de toda la saga. Considerar música épica de fondo, grafismo animado del ecosistema G7, y closing con los dos logos en pantalla. Puede usarse como pieza de presentación institucional completa.</div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>DRILLER</span> · Guiones Corporativos G7 · Fases 1–5 · 15 guiones<br>
+    G7Cripto · G7Fintech SAS · Abril 2026<br>
+    Documento interno — Uso exclusivo para revisión y grabación
+  </div>
+
+</div>
+</body>
+</html>
